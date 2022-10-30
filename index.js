@@ -1,116 +1,108 @@
 let display = document.getElementById("display");
 let button = document.querySelectorAll("button");
 
-let prev ;
-button.forEach(function(index){
-    index.addEventListener('click',evenButtonFun);
-}); 
-function evenButtonFun(e){
-    switch(e.target.innerHTML){
-        case 'Reset':
+let prev;
+button.forEach(function (index) {
+    index.addEventListener("click", evenButtonFun);
+});
+function evenButtonFun(e) {
+    switch (e.target.innerHTML) {
+        case "Reset":
             display.innerHTML = "";
             break;
-        case 'del':
-            display.innerHTML = display.innerHTML.slice(0,-1);
+        case "del":
+            display.innerHTML = display.innerHTML.slice(0, -1);
             break;
-        case '=':
+        case "=":
             display.innerHTML = eval(display.innerHTML);
             prev = eval(display.innerHTML);
             break;
-        case 'x !':
+        case "x !":
             factorial();
             break;
-        case '∑ x':
+        case "∑ x":
             sumation();
             break;
-        case '√ x':
+        case "√ x":
             sqrt();
             break;
-        case 'x <sup>2</sup>':
+        case "x <sup>2</sup>":
             pow();
             break;
-        case 'sin()':
+        case "sin()":
             sin();
             break;
-        case 'cos()':
+        case "cos()":
             cos();
             break;
-        case 'tan()':
+        case "tan()":
             tan();
             break;
-        // case 'ans':
-        //     console.log("true");
-        //     ans();
-        //     break;
-        case 'abs':
+        case "ans":
+            ans();
+            break;
+        case "abs":
             display.innerHTML = Math.abs(eval(display.innerHTML));
             break;
-        case 'log':
+        case "log":
             log();
             break;
-        case 'x <sup>°</sup>':
+        case "x <sup>°</sup>":
             deg();
             break;
-        default :
+        default:
             display.innerHTML += e.target.innerHTML;
-
-
-        prev = display.innerHTML;
-        console.log("prev " + prev);
-        console.log(e.target.innerHTML)
-
     }
 }
 
-function factorial(){
+function factorial() {
     let x = display.innerHTML;
     let fac = 1;
-    for(let i = x; i > 0 ; i--){
+    for (let i = x; i > 0; i--) {
         fac *= i;
     }
     display.innerHTML = fac;
 }
-function sumation(){
+function sumation() {
     sumBoolean = true;
     let x = display.innerHTML;
     let sum = 0;
-    for(let i = 1; i <= x; i++){
+    for (let i = 1; i <= x; i++) {
         sum += i;
     }
     display.innerHTML = sum;
 }
-function sqrt(){
+function sqrt() {
     let x = display.innerHTML;
-    display.innerHTML = Math.sqrt(x,2);
+    display.innerHTML = Math.sqrt(x, 2);
 }
-function pow(){
+function pow() {
     let x = display.innerHTML;
-    display.innerHTML = Math.pow(x,2);
+    display.innerHTML = Math.pow(x, 2);
 }
-function sin(){
+function sin() {
     let x = display.innerHTML;
     display.innerHTML = Math.sin(x);
 }
-function cos(){
+function cos() {
     let x = display.innerHTML;
     display.innerHTML = Math.cos(x);
 }
-function tan(){
+function tan() {
     let x = display.innerHTML;
     display.innerHTML = Math.tan(x);
 }
-// function ans(){
-//     if (prev != ''){ 
-//         display.innerHTML = prev;
-//     }
-// }
-function log(){
+function ans() {
+    if (prev != "") {
+        display.innerHTML = prev;
+    }
+}
+function log() {
     let x = display.innerHTML;
     display.innerHTML = Math.log(x);
-    
 }
-function deg(){
+function deg() {
     let x = display.innerHTML;
     let pi = Math.PI;
-    display.innerHTML = x *(180/pi);
+    display.innerHTML = x * (180 / pi);
 }
